@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 const router = express.Router()
-const prisma = new PrismaClient
+const prisma = new PrismaClient()
 
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body
@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
     res.json({user})
 })
 
-router.login("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     const {email, password} = req.body
     const user = await prisma.user.findUnique({ where: {email} })
     if (!user) return res.status(400).send("Usuário não encontrado")

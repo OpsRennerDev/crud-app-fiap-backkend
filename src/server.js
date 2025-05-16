@@ -1,23 +1,10 @@
-
-
+import app from './app.js'
 import dotenv from "dotenv"
-
-import express from "express"
-
-const app = express()
-
-app.use(express.json)
-
-app.get("/teste", (req, res) => {
-    console.log("opa")
-    res.send("Backend CRUD")
-})
-
 
 dotenv.config()
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3001
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Servidor rodando na porta ${PORT}`)
 })
